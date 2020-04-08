@@ -1,10 +1,11 @@
-const covid19ImpactEstimator = (data, durationInput) => {
-  let durationPeriod = 28;
-  if (durationInput) {
-    if (!Number.isInteger(durationInput)) {
-      throw new Error('Duration period is not a number');
-    }
-    durationPeriod = durationInput;
+const covid19ImpactEstimator = (data) => {
+  let durationPeriod = '';
+  if (data.periodType === 'days') {
+    durationPeriod = data.timeToElapse;
+  } else if (data.periodType === 'weeks') {
+    durationPeriod = Math.floor((data.timeToElapse * 7));
+  } else if (data.periodType === 'months') {
+    durationPeriod = Math.floor((data.timeToElapse * 30));
   }
 
   const impactReportedCase = data.reportedCases * 10;
