@@ -18,15 +18,13 @@ const getImpact = (impactData) => {
   const impactLoss = infectionsByRequestedTime * dailyIncome * incomeInUSD * durationPeriod;
 
   return {
-    impact: {
-      currentlyInfected: reportedCase,
-      infectionsByRequestedTime,
-      severeCasesByRequestedTime: severeCasesPerTime,
-      hospitalBedsByRequestedTime: ((35 / 100) * impactData.totalHospitalBeds) - severeCasesPerTime,
-      casesForICUByRequestedTime: (5 / 100) * infectionsByRequestedTime,
-      casesForVentilatorsByRequestedTime: (2 / 100) * infectionsByRequestedTime,
-      dollarsInFlight: impactLoss
-    }
+    currentlyInfected: reportedCase,
+    infectionsByRequestedTime,
+    severeCasesByRequestedTime: severeCasesPerTime,
+    hospitalBedsByRequestedTime: ((35 / 100) * impactData.totalHospitalBeds) - severeCasesPerTime,
+    casesForICUByRequestedTime: (5 / 100) * infectionsByRequestedTime,
+    casesForVentilatorsByRequestedTime: (2 / 100) * infectionsByRequestedTime,
+    dollarsInFlight: impactLoss
   };
 };
 
