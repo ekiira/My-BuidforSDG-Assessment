@@ -25,10 +25,9 @@ const getSevereImpact = (severeData) => {
     infectionsByRequestedTime,
     severeCasesByRequestedTime: casesPerTime,
     hospitalBedsByRequestedTime: Math.trunc(estimateSevereBeds),
-    casesForICUByRequestedTime: Math.ceil((5 / 100) * infectionsByRequestedTime),
-    casesForVentilatorsByRequestedTime: Math.ceil((2 / 100) * infectionsByRequestedTime),
+    casesForICUByRequestedTime: Math.trunc((5 / 100) * infectionsByRequestedTime),
+    casesForVentilatorsByRequestedTime: Math.trunc((2 / 100) * infectionsByRequestedTime),
     dollarsInFlight: estimateSevereLoss
-
   };
 };
 

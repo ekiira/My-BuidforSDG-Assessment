@@ -25,8 +25,8 @@ const getImpact = (impactData) => {
     infectionsByRequestedTime,
     severeCasesByRequestedTime: severeCasesPerTime,
     hospitalBedsByRequestedTime: Math.trunc(estimateImpactBeds),
-    casesForICUByRequestedTime: Math.ceil((5 / 100) * infectionsByRequestedTime),
-    casesForVentilatorsByRequestedTime: Math.ceil((2 / 100) * infectionsByRequestedTime),
+    casesForICUByRequestedTime: Math.trunc((5 / 100) * infectionsByRequestedTime),
+    casesForVentilatorsByRequestedTime: Math.trunc((2 / 100) * infectionsByRequestedTime),
     dollarsInFlight: estimateImpactLoss
   };
 };
