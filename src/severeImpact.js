@@ -14,18 +14,18 @@ const getSevereImpact = (severeData) => {
 
   const impactReportedCase = severeData.reportedCases * 50;
   const infectionsByRequestedTime = impactReportedCase * duration;
-  const casesPerTime = Math.floor((15 / 100) * infectionsByRequestedTime);
+  const casesPerTime = Number(((15 / 100) * infectionsByRequestedTime).toFixed());
   const severeLoss = infectionsByRequestedTime * dailyIncome * incomeInUSD * durationPeriod;
-  const estimateSevereLoss = Math.floor(severeLoss);
+  const estimateSevereLoss = Number(severeLoss.toFixed(2));
   const severeBeds = severeData.totalHospitalBeds;
 
   return {
     currentlyInfected: impactReportedCase,
     infectionsByRequestedTime,
     severeCasesByRequestedTime: casesPerTime,
-    hospitalBedsByRequestedTime: Math.floor(((35 / 100) * severeBeds) - casesPerTime),
-    casesForICUByRequestedTime: Math.floor((5 / 100) * infectionsByRequestedTime),
-    casesForVentilatorsByRequestedTime: Math.floor((2 / 100) * infectionsByRequestedTime),
+    hospitalBedsByRequestedTime: Number((((35 / 100) * severeBeds) - casesPerTime).toFixed()),
+    casesForICUByRequestedTime: Number(((5 / 100) * infectionsByRequestedTime).toFixed()),
+    casesForVentilatorsByRequestedTime: Number(((2 / 100) * infectionsByRequestedTime).toFixed()),
     dollarsInFlight: estimateSevereLoss
 
   };
