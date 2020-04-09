@@ -9,19 +9,25 @@ const getImpact = (impactData) => {
   }
 
   const duration = 2 ** (Math.floor(durationPeriod / 3));
+  const dailyIncome = impactData.region.avgDailyIncomePopulation;
+  const incomeInUSD = impactData.region.avgDailyIncomeInUSD;
 
   const reportedCase = impactData.reportedCases * 10;
   const infectionsByRequestedTime = reportedCase * duration;
   const severeCasesPerTime = Number(((15 / 100) * infectionsByRequestedTime).toFixed());
   const impactBeds = impactData.totalHospitalBeds;
+  const estimateImpactBeds = ((35 / 100) * impactBeds) - severeCasesPerTime;
+  const impactLoss = infectionsByRequestedTime * dailyIncome * incomeInUSD * durationPeriod;
+  const estimateImpactLoss = Number(impactLoss.toFixed(2));
 
   return {
     currentlyInfected: reportedCase,
     infectionsByRequestedTime,
     severeCasesByRequestedTime: severeCasesPerTime,
-    hospitalBedsByRequestedTime: Number((((35 / 100) * impactBeds) - severeCasesPerTime).toFixed()),
+    hospitalBedsByRequestedTime: Math.trunc(estimateImpactBeds),
     casesForICUByRequestedTime: Number(((5 / 100) * infectionsByRequestedTime).toFixed()),
-    casesForVentilatorsByRequestedTime: Number(((2 / 100) * infectionsByRequestedTime).toFixed())
+    casesForVentilatorsByRequestedTime: Number(((2 / 100) * infectionsByRequestedTime).toFixed()),
+    dollarsInFlight: estimateImpactLoss
   };
 };
 
