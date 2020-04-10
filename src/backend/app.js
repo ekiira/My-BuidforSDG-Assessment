@@ -29,7 +29,7 @@ app.post('/api/v1/on-covid-19/xml', (req, res) => {
   res.send(xml);
 });
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 
 app.listen(port, () => {
   process.stdout.write(`server is running at port ${port}`);
