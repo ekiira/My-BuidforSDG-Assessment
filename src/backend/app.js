@@ -7,10 +7,6 @@ const covid19ImpactEstimator = require('../estimator');
 
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
-  res.send('heroku');
-});
-
 app.post('/api/v1/on-covid-19', (req, res) => {
   const datum = req.body;
   res.send(covid19ImpactEstimator(datum));

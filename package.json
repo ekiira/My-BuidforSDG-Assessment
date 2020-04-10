@@ -5,6 +5,7 @@
   "license": "MIT",
   "private": false,
   "scripts": {
+    "start": "node src/backend/app.js",
     "lint": "eslint ./src/"
   },
   "dependencies": {
