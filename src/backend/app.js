@@ -1,14 +1,14 @@
 const express = require('express');
-const cors = require('cors');
 
 const app = express();
 
+const cors = require('cors');
 const bodyParser = require('body-parser');
+
 const convert = require('xml2js');
 const covid19ImpactEstimator = require('../estimator');
 
 app.use(cors());
-
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
