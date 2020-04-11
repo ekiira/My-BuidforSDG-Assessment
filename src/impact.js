@@ -18,7 +18,7 @@ const getImpact = (impactData) => {
   const impactBeds = impactData.totalHospitalBeds;
   const estimateImpactBeds = ((35 / 100) * impactBeds) - severeCasesPerTime;
   const impactLoss = infectionsByRequestedTime * dailyIncome * incomeInUSD * durationPeriod;
-  const estimateImpactLoss = Number(impactLoss.toFixed(2));
+  const estimateImpactLoss = Math.trunc(impactLoss);
 
   return {
     currentlyInfected: reportedCase,

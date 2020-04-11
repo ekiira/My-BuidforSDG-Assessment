@@ -1,14 +1,18 @@
 const express = require('express');
+const cors = require('cors');
 
 const app = express();
+
 const bodyParser = require('body-parser');
 const convert = require('xml2js');
 const covid19ImpactEstimator = require('../estimator');
 
+app.use(cors());
+
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-  res.send('heroku');
+  res.send('Welcome to the server-side for the Covid-19 impact estimator');
 });
 
 app.post('/api/v1/on-covid-19', (req, res) => {
