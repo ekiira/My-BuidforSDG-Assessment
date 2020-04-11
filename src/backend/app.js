@@ -17,7 +17,9 @@ app.get('/', (req, res) => {
 
 app.post('/api/v1/on-covid-19', (req, res) => {
   const datum = req.body;
-  res.send(covid19ImpactEstimator(datum));
+  const receive = (covid19ImpactEstimator(datum));
+  console.log(receive);
+  res.send(receive);
 });
 
 app.post('/api/v1/on-covid-19/json', (req, res) => {
