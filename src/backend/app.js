@@ -14,7 +14,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-  res.send('Welcome to the server-side for the Covid-19 impact estimator');
+  res.send('Welcome to the server-side for the Covid-19 impact-estimator');
 });
 
 app.post('/api/v1/on-covid-19', (req, res) => {
