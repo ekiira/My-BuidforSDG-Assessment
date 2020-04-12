@@ -3,12 +3,12 @@ const getSevereImpact = (severeData) => {
   if (severeData.periodType === 'days') {
     durationPeriod = severeData.timeToElapse;
   } else if (severeData.periodType === 'weeks') {
-    durationPeriod = Math.floor((severeData.timeToElapse * 7));
+    durationPeriod = Math.trunc((severeData.timeToElapse * 7));
   } else if (severeData.periodType === 'months') {
-    durationPeriod = Math.floor((severeData.timeToElapse * 30));
+    durationPeriod = Math.trunc((severeData.timeToElapse * 30));
   }
 
-  const duration = 2 ** (Math.floor(durationPeriod / 3));
+  const duration = 2 ** (Math.trunc(durationPeriod / 3));
   const dailyIncome = severeData.region.avgDailyIncomePopulation;
   const incomeInUSD = severeData.region.avgDailyIncomeInUSD;
 

@@ -3,12 +3,12 @@ const getImpact = (impactData) => {
   if (impactData.periodType === 'days') {
     durationPeriod = impactData.timeToElapse;
   } else if (impactData.periodType === 'weeks') {
-    durationPeriod = Math.floor((impactData.timeToElapse * 7));
+    durationPeriod = Math.trunc((impactData.timeToElapse * 7));
   } else if (impactData.periodType === 'months') {
-    durationPeriod = Math.floor((impactData.timeToElapse * 30));
+    durationPeriod = Math.trunc((impactData.timeToElapse * 30));
   }
 
-  const duration = 2 ** (Math.floor(durationPeriod / 3));
+  const duration = 2 ** (Math.trunc(durationPeriod / 3));
   const dailyIncome = impactData.region.avgDailyIncomePopulation;
   const incomeInUSD = impactData.region.avgDailyIncomeInUSD;
 
