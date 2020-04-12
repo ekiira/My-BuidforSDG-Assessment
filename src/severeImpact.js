@@ -30,5 +30,5 @@ const getSevereImpact = (severeData) => {
     dollarsInFlight: estimateSevereLoss
   };
 };
-
-module.exports = getSevereImpact;
+export default getSevereImpact;
+// module.exports = getSevereImpact;
