@@ -1,5 +1,5 @@
-import getImpact from './impact';
-import getSevereImpact from './severeImpact';
+const getImpact = require('./impact');
+const getSevereImpact = require('./severeImpact');
 
 const covid19ImpactEstimator = (data) => ({
   data,

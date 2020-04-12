@@ -30,5 +30,4 @@ const getImpact = (impactData) => {
     dollarsInFlight: estimateImpactLoss
   };
 };
-export default getImpact;
-// module.exports = getImpact;
+module.exports = getImpact;
