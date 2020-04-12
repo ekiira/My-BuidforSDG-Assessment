@@ -17,7 +17,7 @@ const getSevereImpact = (severeData) => {
   const casesPerTime = Number(((15 / 100) * infectionsByRequestedTime).toFixed());
   const severeBeds = severeData.totalHospitalBeds;
   const estimateSevereBeds = ((35 / 100) * severeBeds) - casesPerTime;
-  const severeLoss = infectionsByRequestedTime * dailyIncome * incomeInUSD * durationPeriod;
+  const severeLoss = (infectionsByRequestedTime * dailyIncome * incomeInUSD) / durationPeriod;
   const estimateSevereLoss = Math.trunc(severeLoss);
 
   return {
