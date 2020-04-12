@@ -7,10 +7,9 @@ import getSevereImpact from './severeImpact';
 
 const covid19ImpactEstimator = (data) => ({
   data,
-  estimate: {
-    impact: getImpact(data),
-    severeImpact: getSevereImpact(data)
-  }
+  impact: getImpact(data),
+  severeImpact: getSevereImpact(data)
+
 });
 
 // const datum = {
