@@ -31,9 +31,9 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/', (req, res) => {
-  res.send('Welcome to the server-side for the Covid-19 impact-estimator');
-});
+// app.get('/', (req, res) => {
+//   res.send('Welcome to the server-side for the Covid-19 impact-estimator');
+// });
 app.post('/api/v1/on-covid-19', (req, res) => {
   const datum = req.body;
   const receive = (covid19ImpactEstimator(datum));
