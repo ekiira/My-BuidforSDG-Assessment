@@ -22,7 +22,7 @@ app.use((req, res, next) => {
 
     const logs = [method, url, status, responseTime];
     logs.forEach((log) => log);
-    const log = logs.join('\t\t');
+    const log = logs.join('\t');
     fs.appendFile('logs.txt', `${log}\r\n`, 'utf8', (err) => {
       if (err) throw err;
       process.stdout.write('The data has been saved');
