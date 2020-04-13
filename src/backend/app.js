@@ -57,9 +57,9 @@ app.post('/api/v1/on-covid-19/xml', (req, res) => {
 });
 
 app.get('/api/v1/on-covid-19/logs', (req, res) => {
-  res.type('text/plain');
   fs.readFile('logs.txt', (err, data) => {
     if (err) throw err;
+    res.header('Content-type', 'text/plain; charset=utf-8');
     res.send(data);
   });
 });
