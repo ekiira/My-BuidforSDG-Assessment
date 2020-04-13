@@ -11,14 +11,6 @@ const covid19ImpactEstimator = require('../estimator');
 app.use(cors());
 app.use(bodyParser.json());
 
-const requireJsonContent = () => (req, res, next) => {
-  if (req.headers['content-type'] !== 'application/json') {
-    res.status(400).send('Server requires a JSON content');
-  } else {
-    next();
-  }
-};
-
 app.use((req, res, next) => {
   const start = Date.now();
   res.on('finish', () => {
@@ -42,20 +34,20 @@ app.use((req, res, next) => {
 app.get('/', (req, res) => {
   res.send('Welcome to the server-side for the Covid-19 impact-estimator');
 });
-app.post('/api/v1/on-covid-19', requireJsonContent(), (req, res) => {
+app.post('/api/v1/on-covid-19', (req, res) => {
   const datum = req.body;
   const receive = (covid19ImpactEstimator(datum));
   res.set('Cache-Control', 'max-age=31536000');
   res.send(receive);
 });
 
-app.post('/api/v1/on-covid-19/json', requireJsonContent(), (req, res) => {
+app.post('/api/v1/on-covid-19/json', (req, res) => {
   const datum = req.body;
   res.set('Cache-Control', 'max-age=31536000');
   res.send(covid19ImpactEstimator(datum));
 });
 
-app.post('/api/v1/on-covid-19/xml', requireJsonContent(), (req, res) => {
+app.post('/api/v1/on-covid-19/xml', (req, res) => {
   const datum = req.body;
   res.type('application/xml');
   const builder = new convert.Builder();
