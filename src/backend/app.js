@@ -31,9 +31,9 @@ app.use((req, res, next) => {
   next();
 });
 
-// app.get('/', (req, res) => {
-//   res.send('Welcome to the server-side for the Covid-19 impact-estimator');
-// });
+app.get('/', (req, res) => {
+  res.send('Welcome to the server-side for the Covid-19 impact-estimator');
+});
 app.post('/api/v1/on-covid-19', (req, res) => {
   const datum = req.body;
   const receive = (covid19ImpactEstimator(datum));
@@ -57,7 +57,7 @@ app.post('/api/v1/on-covid-19/xml', (req, res) => {
 });
 
 app.get('/api/v1/on-covid-19/logs', (req, res) => {
-  fs.readFile('logs.txt', (err, data) => {
+  fs.readFile('logs.txt', 'utf8', (err, data) => {
     if (err) throw err;
     res.header('Content-type', 'text/plain; charset=utf-8');
     res.send(data);
